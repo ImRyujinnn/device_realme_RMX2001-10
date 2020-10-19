@@ -4,11 +4,5 @@
     "repository" : "LehKeda/vendor_realme_wasabi",
     "target_path": "vendor/realme/wasabi",
     "branch"     : "ten"
-  },
-  {
-    "remote"     : "github",
-    "repository" : "ImRyujinnn/android_kernel_realme_RMX2001",
-    "target_path": "kernel/realme/RMX2001",
-    "branch"     : "wasabi-q-oss"
   }
 ]
