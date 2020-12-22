@@ -78,3 +78,9 @@ lib64/libteeservice_client.trustonic.so
 lib64/vendor.trustonic.tee@1.0.so
 lib64/vendor.trustonic.teeregistry@1.0.so
 priv-app/TeeService/lib/arm64/libTeeServiceJni.so
+
+# Kernel Power Off Charging (KPOC)
+bin/kpoc_charger
+etc/init/kpoc_charger.rc
+lib/libshowlogo.so
+lib/libsysenv_system.so
