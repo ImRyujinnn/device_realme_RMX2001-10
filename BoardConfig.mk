@@ -74,6 +74,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_wasabi
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_DTB_OFFSET := 0x0bc08000
