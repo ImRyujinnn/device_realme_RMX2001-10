@@ -3,3 +3,7 @@ allow system_app sysfs_zram:file { getattr open read };
 allow system_app proc:file { write getattr open read };
 
 set_prop(system_app, dt2w_prop)
+
+# Allow system_app to read fps info node
+allow system_app sysfs_fps:dir search;
+allow system_app sysfs_fps:file r_file_perms;
