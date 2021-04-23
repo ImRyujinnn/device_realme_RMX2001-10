@@ -1,1 +1,6 @@
 allow platform_app vendor_default_prop:file { getattr map open read };
+
+# Allow platform_app to read fps info node
+allow platform_app sysfs_fps:dir search;
+allow platform_app sysfs_fps:file r_file_perms;
+
