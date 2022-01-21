@@ -41,6 +41,9 @@ on boot
     # SELinux nodes, hide permissive state
     chmod 0640 /sys/fs/selinux/enforce
     chmod 0440 /sys/fs/selinux/policy
+    
+    # EAS+
+    write /dev/stune/top-app/schedtune.boost 1
 	
 # Healthd can trigger a full boot from charger mode by signaling this
 # property when the power button is held.
