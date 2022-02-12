@@ -90,4 +90,10 @@ void load_dalvik_properties() {
 
 void vendor_load_properties() {
         load_dalvik_properties();
+        
+    // SafetyNet workaround
+    property_override("ro.boot.veritymode", "enforcing");
+    property_override("ro.boot.verifiedbootstate", "green");
+    property_override("ro.boot.vbmeta.device_state", "locked");
+    property_override("vendor.boot.vbmeta.device_state", "locked");
 }
