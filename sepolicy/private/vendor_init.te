@@ -4,3 +4,6 @@ init_daemon_domain(dynamic_fw_data_file)
 
 allow vendor_init dynamic_fw_data_file:dir setattr;
 allow vendor_init loop_control_device:chr_file getattr;
+
+get_prop(vendor_init, dt2w_prop)
+
