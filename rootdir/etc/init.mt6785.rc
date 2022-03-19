@@ -1,0 +1,57 @@
+import /system/etc/init/init.devicesetting.rc
+import /system/etc/init/init.swap.rc
+
+on init
+    setprop sys.usb.ffs.aio_compat 1
+
+    # Custom overrides that need to happen right on boot
+    # Override vendor fstab
+    # We only need it to be overridden before things are mounted
+    mount none /system/etc/fstab.mt6785 /vendor/etc/fstab.mt6785 bind
+
+on charger
+    # Turn backlight on and switch to backlight trigger
+    write /sys/class/leds/lcd-backlight/brightness "1000"
+    write /sys/class/leds/lcd-backlight/trigger "backlight"
+
+on post-fs
+    # Unmount the overridden fstab because the SELinux label is incorrect
+    # and some MTK daemons can crash because of that
+    # (at post-fs, the fstab has already been used to mount the partitions,
+    #  so it is fine to just revert back)
+    umount /vendor/etc/fstab.mt6785
+
+on post-fs-data
+    # Hack until we build the vendor
+    mount none /dev/null vendor/lib/hw/lights.mt6785.so bind
+    mount none /dev/null vendor/lib/hw/android.hardware.light@2.0-impl-mediatek.so bind
+    mount none /dev/null vendor/bin/hw/android.hardware.light@2.0-service-mediatek bind
+    mount none /dev/null vendor/lib64/hw/lights.mt6785.so bind
+    mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl-mediatek.so bind
+    mount none /dev/null vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc bind
+
+on property:sys.boot_completed=1
+    setprop vendor.oppo.biometrics.fingerprint.boot_completed 1
+
+on boot
+    #VideoCodec
+    chmod 0666 /dev/video0
+    chmod 0666 /dev/video1
+	
+# Healthd can trigger a full boot from charger mode by signaling this
+# property when the power button is held.
+on property:sys.boot_from_charger_mode=1
+    class_stop charger
+    trigger late-init
+
+service charger /system/bin/charger
+    class sec-charger
+    user root
+    group system radio input
+    capabilities SYS_BOOT
+    critical
+
+on charger
+	class_start charger
+	
+
