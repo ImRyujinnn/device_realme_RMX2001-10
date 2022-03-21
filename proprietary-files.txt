@@ -8,12 +8,6 @@ etc/firmware/hx_criteria.csv
 # Hotword
 -product/priv-app/HotwordEnrollmentOKGoogleCORTEXM4/HotwordEnrollmentOKGoogleCORTEXM4.apk
 
-# Kernel Power Offline Charging (KPOC)
-bin/kpoc_charger
-etc/init/kpoc_charger.rc
-lib/libshowlogo.so
-lib/libsysenv_system.so
-
 # MTK-IMS
 -framework/mediatek-common.jar
 -framework/mediatek-framework.jar
