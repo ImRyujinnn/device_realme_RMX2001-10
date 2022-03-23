@@ -37,13 +37,7 @@ on boot
     #VideoCodec
     chmod 0666 /dev/video0
     chmod 0666 /dev/video1
-
-on property:persist.sys.dt2w=0
-    write /proc/touchpanel/double_tap_enable 0
-
-on property:persist.sys.dt2w=1
-    write /proc/touchpanel/double_tap_enable 1
-
+	
 # Healthd can trigger a full boot from charger mode by signaling this
 # property when the power button is held.
 on property:sys.boot_from_charger_mode=1
