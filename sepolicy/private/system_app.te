@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 allow system_app sysfs_zram:dir { search };
 allow system_app sysfs_zram:file { getattr open read };
 allow system_app proc:file { write getattr open read };
-
+=======
 set_prop(system_app, dt2w_prop)
+>>>>>>> 3f1e65f (RM6785: sepolicy: Add DT2WService rules)
