@@ -9,10 +9,10 @@ on init
     # We only need it to be overridden before things are mounted
     mount none /system/etc/fstab.mt6785 /vendor/etc/fstab.mt6785 bind
 
-#on charger
+on charger
     # Turn backlight on and switch to backlight trigger
-    #write /sys/class/leds/lcd-backlight/brightness "1000"
-    #write /sys/class/leds/lcd-backlight/trigger "backlight"
+    write /sys/class/leds/lcd-backlight/brightness "1000"
+    write /sys/class/leds/lcd-backlight/trigger "backlight"
 
 on post-fs
     # Unmount the overridden fstab because the SELinux label is incorrect
